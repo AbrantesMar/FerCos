@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/stack';
 const Tab = createNativeStackNavigator();
 
 import Login from "./screem/home/login";
-import Create from "./screem/usuario/create";
+import Create from "./screem/usuario/userForm";
 import List from "./screem/usuario/list";
 
 export default function Routes() {

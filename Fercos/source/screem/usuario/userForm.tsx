@@ -82,26 +82,9 @@ export default function UserForm() {
                 onChangeText={setMotherName}
             />
             <TextInput
-                placeholder="Nome da Mãe"
-                value={motherName}
-                onChangeText={setMotherName}
-            />
-            <TextInput
                 placeholder="Status"
                 value={status}
                 onChangeText={setStatus}
-            />
-            <TextInput
-                placeholder="Data de Inclusão"
-                value={insertDate}
-                onChangeText={setInsertDate}
-                keyboardType="numeric"
-            />
-            <TextInput
-                placeholder="Data de Alteração"
-                value={changeDate}
-                onChangeText={setChangeDate}
-                keyboardType="numeric"
             />
 
             <Button title="Inserir Usuário" onPress={handleInsertUser} />

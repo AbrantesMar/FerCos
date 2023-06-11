@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, TouchableHighlight, Text, Linking } from 'react-native';
 import Styles from '../../../assets/styles';
 
 class ItemList extends Component {
@@ -12,18 +12,16 @@ class ItemList extends Component {
           <View style={ Styles.cardView }>
             <View style={ Styles.descriptionText }>
               <Text style={ Styles.titleText }>{ this.props.user.name }</Text>
+              <Text style={ Styles.titleText }>{ this.props.user.email }</Text>
               <Text style={ Styles.priceText }>{ this.props.user.login }</Text>
-              {/* <TouchableHighlight
+              <Text style={ Styles.titleText }>{ this.props.user.phone }</Text>
+              <Text style={ Styles.titleText }>{ this.props.user.birthDate }</Text>
+              <TouchableHighlight
                   style={ Styles.linkButton }
-                  onPress={ async () => {
-                    const supported = await Linking.canOpenURL(this.props.data.linkUrl);
-                    if (supported) {
-                      await Linking.openURL(this.props.data.linkUrl);
-                    }
-                  }}
+                  onPress={this.props.onPress}
                 >
-                <Text style={ Styles.textLinkButton }>Ir para loja</Text>
-              </TouchableHighlight> */}
+                <Text style={ Styles.textLinkButton }>Deletar</Text>
+              </TouchableHighlight>
             </View>
           </View>
         </View>

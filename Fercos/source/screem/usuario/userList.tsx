@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, View, FlatList, Text, StyleSheet, Button, StatusBar, TouchableOpacity, TextInput } from 'react-native';
 import UserViewModel from './viewModel/userViewModel';
+import ItemList from '../../components/ListUsers/ItemList';
 
 
 export default function UserList() {
@@ -17,15 +18,12 @@ export default function UserList() {
   };
 
   const alertId = async () => {
-    Alert.alert('Error', 'Error tentar alterar usuário: ' + selectedId, [
-        {
-            text: 'Cancel',
-            onPress: () => console.log('Cancel Pressed'),
-            style: 'cancel',
-        },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-    ]);
-  }
+    if (selectedId === undefined) {
+      viewModel.alert('Error', 'Não existe usuário selecionado');
+      return
+    }
+    viewModel.alert('Usuário', 'Usuário selecionado tem o index de: ' + selectedId)
+  };
 
   const filterData = async (name: string) => {
     if(name === "")
@@ -34,12 +32,28 @@ export default function UserList() {
       return
     }
     setUsers(users.filter(user => user.name.includes(name)));
-  }
+  };
+
+  const deleteUsers = async () => {
+    viewModel.deleteAllUser(users);
+    setUsers([]);
+    viewModel.alert('Usuário', 'Todos os usuários foram deletados');
+  };
+
+  const deleteUser = async (user: any) => {
+    viewModel.deleteUser(user.email, user);
+    setUsers([]);
+    viewModel.alert('Usuário', 'O usuário foi deletado');
+  };
 
   return(
     <View>
-      <Button title="Inserir Usuário" onPress={fetchUsers} />
-      <Button title="Inserir Usuário" onPress={alertId} />
+      <View style={styles.containerHorizontal}>
+        <Button title="Inserir" onPress={fetchUsers} />
+        <Button title="Selecionar" onPress={alertId} />
+        <Button title="Deletar Todos" onPress={deleteUsers} />
+      </View>
+      
       <TextInput
           onChangeText={(name) => filterData(name)}
           value={search}
@@ -55,11 +69,7 @@ export default function UserList() {
           extraData={selectedId}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => setSelectedId(item.id)}>
-              <View style={styles.userContainer}>
-                <Text style={styles.userName}>{item.name}</Text>
-                <Text style={styles.userDetails}>Login: {item.birthDate}</Text>
-                <Text style={styles.userDetails}>E-mail: {item.changeDate}</Text>
-              </View>
+              <ItemList user={item} onPress={() => deleteUser(item)}  />
             </TouchableOpacity>
           )}
         />
@@ -70,6 +80,10 @@ export default function UserList() {
 }
 
 const styles = StyleSheet.create({
+  containerHorizontal: {
+    flex: 1,
+    flexDirection: 'row'
+  },
   container: {
     flex: 1,
     padding: 16,

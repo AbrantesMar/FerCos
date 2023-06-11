@@ -12,3 +12,11 @@ releaseiOS:
 setPrompt:
 	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:$PATH"
 	npx react-native start
+
+start:
+	npx react-native start
+
+ambiente:
+	 npm install body-parser cors express helmet morgan
+	 npm install axios 
+	 make podInstall

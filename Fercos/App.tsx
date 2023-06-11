@@ -15,7 +15,6 @@ import {
   Text,
   useColorScheme,
   View,
-  Button
 } from 'react-native';
 
 import {
@@ -69,6 +68,9 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -76,7 +78,8 @@ function App(): JSX.Element {
           <Header />
           <UserList />
         </View>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
   );
 }
 

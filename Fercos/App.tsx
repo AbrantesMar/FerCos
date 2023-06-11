@@ -15,6 +15,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Button
 } from 'react-native';
 
 import {
@@ -24,6 +25,7 @@ import {
 import Header from './source/components/header/header';
 import UserForm from './source/screem/usuario/userForm';
 import Footer from './source/components/footer/footer';
+import UserList from './source/screem/usuario/userList';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -57,9 +59,8 @@ function Section({children, title}: SectionProps): JSX.Element {
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
   };
 
   return (
@@ -73,8 +74,7 @@ function App(): JSX.Element {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Header />
-          <UserForm />
-          <Footer />
+          <UserList />
         </View>
     </SafeAreaView>
   );

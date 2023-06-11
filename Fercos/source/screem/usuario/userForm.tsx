@@ -17,7 +17,7 @@ export default function UserForm() {
 
     const userViewModel = new UserViewModel();
   
-    const handleInsertUser = () => {
+    const handleInsertUser = async () => {
       const user = {
         name,
         login,
@@ -32,10 +32,7 @@ export default function UserForm() {
         changeDate
       };
       console.log(user);
-      userViewModel.insertUser(user);
-      let userResult = userViewModel.fetchUser()
-      console.log("Result --------------------- Api")
-      console.log(userResult)
+      await userViewModel.insertUser(user);
     };
     return(
         <View>

@@ -8,3 +8,7 @@ podInstall:
 
 releaseiOS:
 	npx react-native run-ios --configuration Release
+
+setPrompt:
+	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:$PATH"
+	npx react-native start

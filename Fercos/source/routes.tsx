@@ -6,7 +6,7 @@ const Tab = createNativeStackNavigator();
 
 import Login from "./screem/home/login";
 import Create from "./screem/usuario/userForm";
-import List from "./screem/usuario/list";
+import List from "./screem/usuario/userList";
 
 export default function Routes() {
     return (

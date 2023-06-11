@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Alert, View, FlatList, Text, StyleSheet, Button, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
+import { Alert, View, FlatList, Text, StyleSheet, Button, StatusBar, TouchableOpacity, TextInput } from 'react-native';
 import UserViewModel from './viewModel/userViewModel';
 
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
   const [selectedId, setSelectedId] = useState<string>();
+  const [search, filterParams ] = useState<string>();
   
   const viewModel = new UserViewModel();
   const fetchUsers = async () => {
@@ -26,10 +27,25 @@ export default function UserList() {
     ]);
   }
 
+  const filterData = async (name: string) => {
+    if(name === "")
+    {
+      fetchUsers()
+      return
+    }
+    setUsers(users.filter(user => user.name.includes(name)));
+  }
+
   return(
-    <SafeAreaView>
+    <View>
       <Button title="Inserir Usuário" onPress={fetchUsers} />
       <Button title="Inserir Usuário" onPress={alertId} />
+      <TextInput
+          onChangeText={(name) => filterData(name)}
+          value={search}
+          underlineColorAndroid="transparent"
+          placeholder="Search Here"
+        />
       <Text style={styles.title}>Lista de Usuários</Text>
       {!users && <Text>Loading</Text>}
       {users && (
@@ -49,7 +65,7 @@ export default function UserList() {
         />
       )}
       
-    </SafeAreaView>
+    </View>
   );
 }
 

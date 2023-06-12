@@ -13,13 +13,16 @@ db.on('connected', function(){
 });
 db.on('error', function(err){
     console.log('Erro de conexao.', err);
+    sendJsonResponse(res, 501, {"status": "Erro de conexão com a base"});
 });
 db.on('disconnected', function(){
     console.log('Desconectado');
+    sendJsonResponse(res, 403, {"status": "Base desconectada"});
 });
 gracefulShutdown = function(msg, callback) {
   db.close(function(){
     console.log('Mongoose disconnected through ' + msg);
+    sendJsonResponse(res, 501, {"status": "Erro de conexão com a base"});
   });
 };
 

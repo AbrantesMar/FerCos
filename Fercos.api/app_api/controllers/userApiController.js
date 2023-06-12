@@ -7,19 +7,19 @@ var sendJsonResponse = function(res, status, content){
 }
 
 module.exports.userListByDistance = async function(req, res) {
-  sendJsonResponse(res, 200, {"status": "success"});
-//   try {
-//     const users = await User.find();
-//     res.json(users);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Erro ao buscar usuários' });
-//   }
+    try {
+      const users = await User.find({ state: "Ativo" });
+      res.json(users);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao buscar usuários' });
+    }
 };
 module.exports.userCreate = async function(req, res) {
-  //sendJsonResponse(res, 200, {"status": "success", "data": req.body});
   try {
-    const user = new User(req.body);
-    await user.save();
+    var user = new User(req.body);
+    user.insertDate = Date.now()
+    user.changeDate = Date.now()
+    user.save();
     res.status(201).json(user);
   } catch (error) {
     res.status(400).json({ error: 'Erro ao criar usuário' });
@@ -29,9 +29,9 @@ module.exports.findById = async function(req, res) {
   sendJsonResponse(res, 200, {"status": "success"});
 };
 module.exports.atualizarUser = async function(req, res) {
-  sendJsonResponse(res, 200, {"status": "success", "data": req.body});
   try {
     const { id } = req.params;
+    req.body.changeDate = Date.now()
     const user = await User.findByIdAndUpdate(id, req.body, { new: true });
     if (!user) {
       return res.status(404).json({ error: 'Usuário não encontrado' });
@@ -42,15 +42,16 @@ module.exports.atualizarUser = async function(req, res) {
   }
 };
 module.exports.deletarUser = async function(req, res) {
-  sendJsonResponse(res, 200, {"status": "success"});
   try {
     const { id } = req.params;
-    const user = await User.findByIdAndDelete(id);
+    req.body.changeDate = Date.now()
+    req.body.state = "inativo";
+    const user = await User.findByIdAndUpdate(id, req.body, { new: true });
     if (!user) {
       return res.status(404).json({ error: 'Usuário não encontrado' });
     }
-    res.json({ message: 'Usuário excluído com sucesso' });
+    res.json(user);
   } catch (error) {
-    res.status(400).json({ error: 'Erro ao excluir usuário' });
+    res.status(400).json({ error: 'Erro ao atualizar usuário' });
   }
 };

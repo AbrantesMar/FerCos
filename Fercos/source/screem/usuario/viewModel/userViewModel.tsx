@@ -8,8 +8,8 @@ class UserViewModel {
 
     constructor() {
         this.instance = axios.create({
-            //baseURL: "http://localhost:3000/api/users",
-            baseURL: "https://6482945cf2e76ae1b95b5107.mockapi.io/api/v1/user",
+            baseURL: "http://localhost:3000/api/users",
+            //baseURL: "https://6482945cf2e76ae1b95b5107.mockapi.io/api/v1/user",
             headers: {
               "Content-Type": "application/json",
             },
@@ -19,15 +19,15 @@ class UserViewModel {
     async insertUser(user: any) {
         user.insertDate = new Date()
         user.changeDate = new Date()
+        user.state = "Ativo";
         console.log(user)
         try {
             user.inset
-            const result = this.instance.post("", user);
-            if (result.status != 200) {
+            const result = await this.instance.post("", user);
+            if (result.status > 299 || result.status < 200) {
                 this.alert('Error', 'Não conseguimos cadastrar seu usuário');
                 return;
             }
-            this.state = result.data;
         } catch (err) {
             console.log(err);
             this.alert('Error', 'Não conseguimos cadastrar seu usuário');
@@ -37,7 +37,7 @@ class UserViewModel {
     async fetchUser() {
         try {
             const result = await this.instance.get();
-            if (result.status != 200) {
+            if (result.status > 299 || result.status < 200) {
                 this.alert('Error', 'Usuário não encontrado');
                 return;
             }

@@ -11,9 +11,6 @@ export default function UserForm() {
     const [cpf, setCpf] = useState('');
     const [birthDate, setBirthDate] = useState('');
     const [motherName, setMotherName] = useState('');
-    const [status, setStatus] = useState('');
-    const [insertDate, setInsertDate] = useState('');
-    const [changeDate, setChangeDate] = useState('');
 
     const userViewModel = new UserViewModel();
   
@@ -26,10 +23,7 @@ export default function UserForm() {
         phone,
         cpf,
         birthDate,
-        motherName,
-        status,
-        insertDate,
-        changeDate
+        motherName
       };
       console.log(user);
       await userViewModel.insertUser(user);
@@ -80,11 +74,6 @@ export default function UserForm() {
                 placeholder="Nome da Mãe"
                 value={motherName}
                 onChangeText={setMotherName}
-            />
-            <TextInput
-                placeholder="Status"
-                value={status}
-                onChangeText={setStatus}
             />
 
             <Button title="Inserir Usuário" onPress={handleInsertUser} />

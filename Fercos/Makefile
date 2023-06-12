@@ -16,7 +16,18 @@ setPrompt:
 start:
 	npx react-native start
 
-ambiente:
-	 npm install body-parser cors express helmet morgan
-	 npm install axios 
-	 make podInstall
+startMobile:
+	npm install axios
+	make podInstall 
+	make start
+
+startWeb
+	brew services start mongodb-community@6.0
+	cd ..
+	cd Fercos.api
+	npm install body-parser cors express helmet morgan
+	npm start
+	
+
+db: 
+	brew services stop mongodb-community@6.0

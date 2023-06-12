@@ -65,10 +65,10 @@ export default function UserList() {
       {users && (
         <FlatList
           data={users}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id.toString()}
           extraData={selectedId}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => setSelectedId(item.id)}>
+            <TouchableOpacity onPress={() => setSelectedId(item._id)}>
               <ItemList user={item} onPress={() => deleteUser(item)}  />
             </TouchableOpacity>
           )}

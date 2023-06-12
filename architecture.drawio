@@ -1,0 +1,67 @@
+<mxfile host="65bd71144e">
+    <diagram id="tzQmgwNkEI6M4KD7QeB0" name="Page-1">
+        <mxGraphModel dx="882" dy="688" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="API Mock" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="320" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" style="edgeStyle=none;html=1;" edge="1" parent="1" source="3" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="API - Node" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="10" y="230" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="mongoDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="60" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=none;html=1;entryX=0.55;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5" target="3">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="76" y="610"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=none;html=1;entryX=0.717;entryY=0.888;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7.misc.iphone;strokeColor=#c0c0c0;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="550" width="70" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="mock para gerenciar usuários&lt;br&gt;https://6482945cf2e76ae1b95b5107.mockapi.io/api/v1/user" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="250" width="330" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="api que vai gerenciar usuário" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="120" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;entryX=0.958;entryY=0.417;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="12" target="5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="source - app - ReactNative" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="500" width="360" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="components" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="12">
+                    <mxGeometry x="10" y="30" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="screen" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="12">
+                    <mxGeometry x="110" y="30" width="230" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="View&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="16">
+                    <mxGeometry x="10" y="30" width="210" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="viewModel" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="16">
+                    <mxGeometry x="110" y="65" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;" edge="1" parent="1" source="13">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="600" y="620" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="545" y="620"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
